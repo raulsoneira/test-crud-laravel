@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('motos', function (Blueprint $table) {
             $table->id();
+            $table->string('marca');
+            $table->string('model');
+            $table->string('anio');
+            $table->string('precio');
             $table->timestamps();
         });
     }

@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Moto extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['marca', 'model', 'anio', 'precio'];
 }

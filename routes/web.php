@@ -9,3 +9,4 @@ Route::get('/', function () {
 
 Route::get('/moto',[MotoController::class,'index'])->name('moto.index');
 Route::post('/moto/store',[MotoController::class,'store'])->name('moto.store');
+Route::get('/moto/destroy/{id}',[MotoController::class,'destroy'])->name('moto.destroy');
