@@ -46,4 +46,28 @@ class MotoController extends Controller
 
         return redirect('/moto')->with('success', 'Moto ' . $moto->marca . ' eliminada correctamente');
     }
+
+    public function edit($id)
+    {
+        $moto = Moto::find($id);
+
+        return view(
+            'moto.edit',
+            [
+                'moto' => $moto
+            ]
+            );
+    }
+
+    public function update(Request $request) {
+        $request->validate([
+            'marca' => ['required'],
+            'model' => ['required'],
+            'anio' => ['required'],
+            'precio' => ['required', 'numeric'],
+        ]);
+
+        $moto = Moto::find($request->id);
+        $moto->marca = $request->marca;
+    }
 }

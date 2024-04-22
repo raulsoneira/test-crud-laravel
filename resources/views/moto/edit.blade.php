@@ -2,9 +2,10 @@
 
 @section('content')
     <div class="container mx-auto mt-8">
-        <h1 class="text-2xl font-bold mb-4">Crear Moto</h1>
-        <form action="{{ route('moto.store') }}" method="POST" class="w-full max-w-lg">
+        <h1 class="text-2xl font-bold mb-4">Update Moto</h1>
+        <form action="{{ route('moto.update') }}" method="POST" class="w-full max-w-lg">
             @csrf
+            <input type="hidden" name="id" value="{{ $moto['id'] }}">
             <div class="mb-4">
                 <label for="marca" class="block text-gray-700 font-bold mb-2">Marca:</label>
                 <input type="text" id="marca" name="marca" class="form-input w-full"
@@ -47,37 +48,5 @@
                 </div>
             @endif
         </form>
-
-        <div class="mt-8">
-            <h2 class="text-2xl font-bold mb-4">Motos Creadas</h2>
-            <table class="table-auto">
-                <thead>
-                    <tr>
-                        <th class="px-4 py-2">Marca</th>
-                        <th class="px-4 py-2">Modelo</th>
-                        <th class="px-4 py-2">Año</th>
-                        <th class="px-4 py-2">Precio</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($motos as $moto)
-                        <tr>
-                            <td class="border px-4 py-2">{{ $moto['marca'] }}</td>
-                            <td class="border px-4 py-2">{{ $moto['model'] }}</td>
-                            <td class="border px-4 py-2">{{ $moto['anio'] }}</td>
-                            <td class="border px-4 py-2">${{ $moto['precio'] }}</td>
-                            <td class="border px-4 py-2">
-                                <a href="/moto/destroy/{{ $moto['id'] }}"
-                                    class="bg-red-500 text-white px-4 py-2 rounded">Eliminar</a>
-                                <a href="/moto/update/{{ $moto['id'] }}"
-                                    class="bg-yellow-700 text-white px-4 py-2 rounded">Update</a>
-                            </td>
-                        </tr>
-                    @endforeach
-
-                </tbody>
-            </table>
-        </div>
-
     </div>
 @endsection
