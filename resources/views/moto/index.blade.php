@@ -42,9 +42,7 @@
             </div>
 
             @if (@session('success'))
-                <div style="background-color: #f0f0f0; padding: 10px; border-radius: 5px;">
-                    <span style="color: green;">{{ session('success') }}</span>
-                </div>
+                <x-flash_ok />
             @endif
         </form>
 
@@ -67,10 +65,8 @@
                             <td class="border px-4 py-2">{{ $moto['anio'] }}</td>
                             <td class="border px-4 py-2">${{ $moto['precio'] }}</td>
                             <td class="border px-4 py-2">
-                                <a href="/moto/destroy/{{ $moto['id'] }}"
-                                    class="bg-red-500 text-white px-4 py-2 rounded">Eliminar</a>
-                                <a href="/moto/update/{{ $moto['id'] }}"
-                                    class="bg-yellow-700 text-white px-4 py-2 rounded">Update</a>
+                                <x-but_del :id="$moto['id']" text="Delete" />
+                                <x-but_upd :id="$moto['id']" text="Update" />
                             </td>
                         </tr>
                     @endforeach
